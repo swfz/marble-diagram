@@ -1,24 +1,23 @@
-//@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
-$stream-height: 40px;
-.stream {
+:host {
   display: block;
-  height: $stream-height;
+  height: 40px;
 }
 .stream-line {
   position: relative;
-  //margin-left: 10px;
+  margin-left: 10px;
   //margin-right: 10px;
-  width: 80%;
+  width: 90%;
   height: 4px;
-  background-color: #000000;
+  background-color: #999999;
   border-ladius: 0 2px 2px 0;
   top: 22px;
   z-index: 0;
 }
 .add-button {
   display: inline-block;
+}
+app-marble {
+  //margin-left: 50px;
 }
 app-marble:nth-child(4n) {
   background-color: #8FC31F;

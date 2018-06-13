@@ -1,0 +1,10 @@
+<div *ngIf="editting">
+  <mat-form-field>
+    <input matInput type="text"
+           value="{{_value}}"
+           (keypress)="onKeyPress($event)">
+  </mat-form-field>
+</div>
+<div *ngIf="!editting" style="{overflow-x: auto}">
+  {{_value}}
+</div>

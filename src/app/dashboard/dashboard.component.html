@@ -1,0 +1,46 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+
+  <mat-menu #appMenu="matMenu">
+    <button (click)="addStream()" mat-menu-item>Stream</button>
+    <button [matMenuTriggerFor]="operatorMenu" mat-menu-item>Operator</button>
+  </mat-menu>
+
+  <mat-menu #operatorMenu="matMenu">
+    <ng-container *ngFor="let operator of operatorKeys">
+      <button mat-menu-item (click)="addOperator(operator)">{{operator}}</button>
+    </ng-container>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <button mat-mini-fab color="accent">+</button>
+  </button>
+
+  <mat-grid-list cols="2" rowHeight="80px">
+    <mat-grid-tile *ngFor="let card of cards; index as i" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button *ngIf="isStream(card)" (click)="addMarble(i)" mat-menu-item>AddValue</button>
+              <button (click)="removeCard(i)" mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <ng-container *ngIf="isStream(card)">
+            <app-stream [marbles]="card.data">
+            </app-stream>
+          </ng-container>
+          <ng-container *ngIf="isOperator(card)">
+            <app-operator [value]="card.data">
+            </app-operator>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
