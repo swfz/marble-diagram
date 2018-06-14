@@ -1,13 +1,6 @@
 <div class="operator">
-  <ng-container *ngIf="editting">
-    <mat-form-field>
-      <input matInput type="text"
-             value="{{_value}}"
-             (keypress)="onKeyPress($event)">
-    </mat-form-field>
-  </ng-container>
-  <ng-container *ngIf="!editting">
-    {{_value}}
-  </ng-container>
+  <div #editor contenteditable="true">
+    {{ _value }}
+  </div>
 </div>
 

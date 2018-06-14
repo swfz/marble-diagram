@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   private operators: { [key: string]: string };
   public operatorKeys: string[];
   public cards: ICard[];
+  public marbles: number[];
 
   ngOnInit() {
     this.cards = [
@@ -28,12 +29,19 @@ export class DashboardComponent implements OnInit {
       scan: 'scan((acc, x) => acc + x)'
     };
 
+    this.marbles = [1,2,3,4,5,6,7,8];
     this.operatorKeys = Object.keys(this.operators);
   }
 
-  addStream() {
-    console.log(this.cards);
-    this.cards.push({ title: 'Stream', cols: 2, rows: 1, data: [1, 2, 3, 4] });
+  addStream(number: number) {
+    this.cards.push(
+      {
+        title: 'Stream',
+        cols: 2,
+        rows: 1,
+        data: this.marbles.slice(0, number)
+      }
+    );
   }
 
   addOperator(key: string) {
@@ -51,7 +59,7 @@ export class DashboardComponent implements OnInit {
 
   addMarble(i) {
     const size = this.cards[i].data.length;
-    this.cards[i].data.push(size);
+    this.cards[i].data.push(size + 1);
   }
 
   isStream(card): boolean {

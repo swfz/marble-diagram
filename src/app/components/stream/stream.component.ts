@@ -1,12 +1,7 @@
 import {
   Component,
-  ComponentFactoryResolver,
   Input,
-  OnInit,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-  ViewContainerRef
+  OnInit
 } from '@angular/core';
 import { MarbleComponent } from '../marble/marble.component';
 
@@ -22,7 +17,5 @@ export class StreamComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.marbles);
-    // this.marbles = [];
   }
 }

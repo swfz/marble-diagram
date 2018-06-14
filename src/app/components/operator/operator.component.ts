@@ -1,12 +1,11 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-operator',
   templateUrl: './operator.component.html',
   styleUrls: ['./operator.component.scss']
 })
-export class OperatorComponent implements OnInit {
-  public editting: boolean;
+export class OperatorComponent {
   public _value: any;
 
   @Input()
@@ -15,20 +14,4 @@ export class OperatorComponent implements OnInit {
   }
 
   constructor() {}
-
-  @HostListener('dblclick', ['$event'])
-  onEdit() {
-    this.editting = true;
-  }
-
-  ngOnInit() {
-    this.editting = false;
-  }
-
-  onKeyPress(e: KeyboardEvent) {
-    if (e.key === 'Enter') {
-      this._value = e.target['value'];
-      this.editting = false;
-    }
-  }
 }

@@ -1,17 +1,11 @@
 import {
   Component,
-  ContentChild,
-  EventEmitter,
   HostBinding,
-  HostListener,
   Input,
   OnInit,
-  QueryList,
-  Renderer,
+  Renderer2,
   ViewChild,
-  ViewChildren
 } from '@angular/core';
-import { MatInput } from '@angular/material';
 
 @Component({
   selector: 'app-marble',
@@ -19,45 +13,43 @@ import { MatInput } from '@angular/material';
   styleUrls: ['./marble.component.scss']
 })
 export class MarbleComponent implements OnInit {
-  public editting: boolean;
   public _value: any;
-  public closing: EventEmitter<any> = new EventEmitter<any>();
-  private tmpValue: any;
+  private valueLength: number;
+  private threashold: number;
+
+  @ViewChild('editor') editor;
 
   @Input()
   set value(v) {
     this._value = v;
   }
   @HostBinding('attr.slidable') slidable = true;
-  @HostListener('dblclick', ['$event'])
-  onEdit() {
-    this.editting = true;
-  }
 
-  constructor() {}
+  constructor(private renderer: Renderer2) {}
 
   ngOnInit(): void {
-    this.editting = false;
-    this.tmpValue = this._value;
+    this.threashold = 1;
   }
 
-  onKeyPress(e: KeyboardEvent): void {
-    if (e.key === 'Enter') {
-      this.focusOut();
+  onKeyUp(e: KeyboardEvent): void {
+    this.valueLength = e.target['innerText'].length;
+
+    if(this.editor.nativeElement.clientHeight > 40) {
+      this.threashold = this.valueLength;
     }
-    this.tmpValue = e.target['value'];
-  }
 
-  destroyMarble(): void {
-    this.closing.emit();
-  }
-
-  onOutsideClick(): void {
-    this.focusOut();
-  }
-
-  private focusOut() {
-    this._value = this.tmpValue;
-    this.editting = false;
+    if(this.editor.nativeElement.clientHeight > 40){
+      this.renderer.setStyle(
+        this.editor.nativeElement,
+        'line-height',
+        '1'
+        );
+    } else {
+       this.renderer.setStyle(
+        this.editor.nativeElement,
+        'line-height',
+        '40'
+        );
+    }
   }
 }

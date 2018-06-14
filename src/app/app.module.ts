@@ -18,7 +18,7 @@ import {
   MatGridListModule,
   MatCardModule,
   MatMenuModule,
-  MatInputModule
+  MatInputModule, MatBadgeModule
 } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OutsideClickDirective } from './directives/outside-click.directive';
@@ -42,6 +42,7 @@ import { OutsideClickDirective } from './directives/outside-click.directive';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatBadgeModule,
     MatListModule,
     MatInputModule,
     MatGridListModule,
