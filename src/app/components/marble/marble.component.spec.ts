@@ -8,9 +8,8 @@ describe('MarbleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MarbleComponent ]
-    })
-    .compileComponents();
+      declarations: [MarbleComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

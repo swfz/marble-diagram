@@ -1,5 +1,14 @@
-import {Component, ComponentFactoryResolver, Input, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef} from '@angular/core';
-import {MarbleComponent} from '../marble/marble.component';
+import {
+  Component,
+  ComponentFactoryResolver,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  ViewContainerRef
+} from '@angular/core';
+import { MarbleComponent } from '../marble/marble.component';
 
 @Component({
   selector: 'app-stream',
@@ -10,12 +19,10 @@ import {MarbleComponent} from '../marble/marble.component';
 export class StreamComponent implements OnInit {
   @Input() marbles: any;
 
-  constructor(
-  ) { }
+  constructor() {}
 
   ngOnInit() {
     console.log(this.marbles);
     // this.marbles = [];
   }
-
 }

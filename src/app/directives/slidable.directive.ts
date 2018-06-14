@@ -1,4 +1,12 @@
-import { Directive, ElementRef, Renderer, OnDestroy, OnInit, AfterViewInit, Input } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Renderer,
+  OnDestroy,
+  OnInit,
+  AfterViewInit,
+  Input
+} from '@angular/core';
 
 @Directive({
   selector: '[slidable]',
@@ -11,35 +19,43 @@ import { Directive, ElementRef, Renderer, OnDestroy, OnInit, AfterViewInit, Inpu
 export class SlidableDirective implements OnDestroy, OnInit, AfterViewInit {
   private Δx: number = 0;
 
-  private canDrag:boolean = true;
+  private canDrag: boolean = true;
 
   @Input('slidable')
-  set slidable(val:any){
-    if(val === undefined || val === null || val === '' ) return;
+  set slidable(val: any) {
+    if (val === undefined || val === null || val === '') return;
     this.canDrag = !!val;
   }
   private mustBePosition: Array<string> = ['absolute', 'fixed', 'relative'];
-  constructor(
-    private el: ElementRef, private renderer: Renderer
-  ) {
-
-  }
+  constructor(private el: ElementRef, private renderer: Renderer) {}
 
   ngOnInit(): void {
-    this.renderer.setElementAttribute(this.el.nativeElement, 'draggable', 'true');
+    this.renderer.setElementAttribute(
+      this.el.nativeElement,
+      'draggable',
+      'true'
+    );
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     try {
       let position = window.getComputedStyle(this.el.nativeElement).position;
       if (this.mustBePosition.indexOf(position) === -1) {
-        console.warn( this.el.nativeElement, 'Must be having position attribute set to ' + this.mustBePosition.join('|'));
+        console.warn(
+          this.el.nativeElement,
+          'Must be having position attribute set to ' +
+            this.mustBePosition.join('|')
+        );
       }
     } catch (ex) {
       console.error(ex);
     }
   }
   ngOnDestroy(): void {
-    this.renderer.setElementAttribute(this.el.nativeElement, 'draggable', 'false');
+    this.renderer.setElementAttribute(
+      this.el.nativeElement,
+      'draggable',
+      'false'
+    );
   }
 
   onDragStart(event: MouseEvent) {
@@ -56,6 +72,10 @@ export class SlidableDirective implements OnDestroy, OnInit, AfterViewInit {
 
   doTranslation(x: number, y: number) {
     if (!x || !y) return;
-    this.renderer.setElementStyle(this.el.nativeElement, 'left', (x - this.Δx) + 'px');
+    this.renderer.setElementStyle(
+      this.el.nativeElement,
+      'left',
+      x - this.Δx + 'px'
+    );
   }
 }

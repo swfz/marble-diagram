@@ -1,8 +1,17 @@
 import {
-  Component, ContentChild, EventEmitter, HostBinding, HostListener, Input, OnInit, QueryList, Renderer, ViewChild,
+  Component,
+  ContentChild,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  QueryList,
+  Renderer,
+  ViewChild,
   ViewChildren
 } from '@angular/core';
-import {MatInput} from '@angular/material';
+import { MatInput } from '@angular/material';
 
 @Component({
   selector: 'app-marble',
@@ -16,25 +25,24 @@ export class MarbleComponent implements OnInit {
   private tmpValue: any;
 
   @Input()
-  set value(v){
+  set value(v) {
     this._value = v;
   }
   @HostBinding('attr.slidable') slidable = true;
   @HostListener('dblclick', ['$event'])
-  onEdit(){
+  onEdit() {
     this.editting = true;
   }
 
-  constructor(
-  ) { }
+  constructor() {}
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.editting = false;
     this.tmpValue = this._value;
   }
 
   onKeyPress(e: KeyboardEvent): void {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       this.focusOut();
     }
     this.tmpValue = e.target['value'];

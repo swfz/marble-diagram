@@ -8,9 +8,8 @@ describe('OperatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OperatorComponent ]
-    })
-    .compileComponents();
+      declarations: [OperatorComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
