@@ -14,6 +14,7 @@ import {
   MatInputModule
 } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OutsideClickDirective } from './directives/outside-click.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     StreamComponent,
     MainNavComponent,
     DashboardComponent,
+    OutsideClickDirective,
   ],
   imports: [
     BrowserModule,

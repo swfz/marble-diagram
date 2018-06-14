@@ -19,16 +19,35 @@
 app-marble {
   //margin-left: 50px;
 }
-app-marble:nth-child(4n) {
+app-marble:nth-child(8n) {
   background-color: #8FC31F;
+  left: 0px;
 }
-app-marble:nth-child(4n+1) {
+app-marble:nth-child(8n+1) {
   background-color: #E4007F;
+  left: 50px;
 }
-app-marble:nth-child(4n+2) {
+app-marble:nth-child(8n+2) {
   background-color: #0068B7;
+  left: 100px;
 }
-app-marble:nth-child(4n+3) {
+app-marble:nth-child(8n+3) {
   background-color: #F39800;
+  left: 150px;
 }
-
+app-marble:nth-child(8n+4) {
+  background-color: #920783;
+  left: 200px;
+}
+app-marble:nth-child(8n+5) {
+  background-color: #009E96;
+  left: 250px;
+}
+app-marble:nth-child(8n+6) {
+  background-color: #E60012;
+  left: 300px;
+}
+app-marble:nth-child(8n+7) {
+  background-color: #00A0E9;
+  left: 350px;
+}
