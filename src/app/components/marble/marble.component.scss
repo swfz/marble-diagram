@@ -24,5 +24,6 @@ $marble-radius: 20px;
 
 div[contenteditable] {
   overflow-x: visible;
+  word-wrap: normal;
 }
 

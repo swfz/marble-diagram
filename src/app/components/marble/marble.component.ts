@@ -7,6 +7,10 @@ import {
   ViewChild,
 } from '@angular/core';
 
+export interface IStyle {
+  key: string;
+  value: string;
+}
 @Component({
   selector: 'app-marble',
   templateUrl: './marble.component.html',
@@ -14,8 +18,6 @@ import {
 })
 export class MarbleComponent implements OnInit {
   public _value: any;
-  private valueLength: number;
-  private threashold: number;
 
   @ViewChild('editor') editor;
 
@@ -28,28 +30,30 @@ export class MarbleComponent implements OnInit {
   constructor(private renderer: Renderer2) {}
 
   ngOnInit(): void {
-    this.threashold = 1;
   }
 
   onKeyUp(e: KeyboardEvent): void {
-    this.valueLength = e.target['innerText'].length;
-
-    if(this.editor.nativeElement.clientHeight > 40) {
-      this.threashold = this.valueLength;
+    const lineNumber = e.target['childNodes'].length;
+    if(lineNumber > 1){
+      this.setEditorStyle([
+        {key: 'line-height', value: '1'},
+        {key: 'text-align', value: 'left'}
+      ]);
+    } else {
+      this.setEditorStyle([
+        {key: 'line-height', value: '4'},
+        {key: 'text-align', value: 'center'}
+      ]);
     }
+ }
 
-    if(this.editor.nativeElement.clientHeight > 40){
+  private setEditorStyle(styles: IStyle[]) {
+    styles.forEach(style => {
       this.renderer.setStyle(
         this.editor.nativeElement,
-        'line-height',
-        '1'
-        );
-    } else {
-       this.renderer.setStyle(
-        this.editor.nativeElement,
-        'line-height',
-        '40'
-        );
-    }
+        style.key,
+        style.value
+      );
+    });
   }
 }
