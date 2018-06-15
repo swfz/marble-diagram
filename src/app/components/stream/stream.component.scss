@@ -3,22 +3,25 @@
   height: 40px;
 }
 .stream-line {
-  position: relative;
-  margin-left: 10px;
-  //margin-right: 10px;
+  display:inline-block;
+  height:5px;
   width: 90%;
-  height: 4px;
-  background-color: #999999;
-  border-ladius: 0 2px 2px 0;
-  top: 22px;
-  z-index: 0;
+  background-color:#999999;
+  position:relative;
+  top:10px;
 }
-.add-button {
-  display: inline-block;
+// Caret
+.stream-line::before{
+  position:absolute;
+  content:"";
+  width:0;
+  height:0;
+  border:9px solid transparent;
+  border-left:9px solid #999999;
+  left:calc(100%);
+  top:-6px;
 }
-app-marble {
-  //margin-left: 50px;
-}
+
 app-marble:nth-child(8n) {
   background-color: #8FC31F;
   left: 0px;
