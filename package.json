@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "prettier --single-quote --parser typescript --write \"./**/*.ts\""
+    "prettier": "prettier --single-quote --parser typescript --write \"./**/*.ts\"",
+    "deploy": "ng build --prod --aot --base-href='https://swfz.github.io/marble-diagram/' && ngh --dir=dist/marble-diagram"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "angular-cli-ghpages": "^0.5.2",
     "angulartics2": "^6.1.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
