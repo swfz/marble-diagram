@@ -21,3 +21,11 @@
   text-align: center;
 }
 
+.screen {
+  background-color: #333333;
+}
+
+.download {
+  display: none;
+}
+

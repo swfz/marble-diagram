@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import * as html2canvas from 'html2canvas';
 
 export interface ICard {
   title: string;
@@ -6,6 +7,7 @@ export interface ICard {
   rows: number;
   data: any;
 }
+
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,6 +18,10 @@ export class DashboardComponent implements OnInit {
   public operatorKeys: string[];
   public cards: ICard[];
   public marbles: number[];
+
+  @ViewChild('screen') screen: ElementRef;
+  @ViewChild('canvas') canvas: ElementRef;
+  @ViewChild('downloadLink') downloadLink: ElementRef;
 
   ngOnInit() {
     this.cards = [
@@ -68,5 +74,14 @@ export class DashboardComponent implements OnInit {
 
   isOperator(card): boolean {
     return card.title === 'Operator';
+  }
+
+  downloadImage(){
+    html2canvas(this.screen.nativeElement).then(canvas => {
+      this.canvas.nativeElement.src = canvas.toDataURL();
+      this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
+      this.downloadLink.nativeElement.download = 'marble-diagram.png';
+      this.downloadLink.nativeElement.click();
+    });
   }
 }
