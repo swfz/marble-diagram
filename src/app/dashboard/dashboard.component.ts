@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as html2canvas from 'html2canvas';
 
 export interface ICard {
@@ -42,22 +42,20 @@ export class DashboardComponent implements OnInit {
       scan: 'scan((acc, cur) => acc + cur, 0)',
       skip: 'skip(3)',
       skipWhile: 'skipWhile(x => x < 4)',
-      takeWhile: 'takeWhile(x => x == 5)',
+      takeWhile: 'takeWhile(x => x == 5)'
     };
 
-    this.marbles = [1,2,3,4,5,6,7,8];
+    this.marbles = [1, 2, 3, 4, 5, 6, 7, 8];
     this.operatorKeys = Object.keys(this.operators);
   }
 
   addStream(number: number) {
-    this.cards.push(
-      {
-        title: 'Stream',
-        cols: 2,
-        rows: 1,
-        data: this.marbles.slice(0, number)
-      }
-    );
+    this.cards.push({
+      title: 'Stream',
+      cols: 2,
+      rows: 1,
+      data: this.marbles.slice(0, number)
+    });
   }
 
   addOperator(key: string) {
@@ -86,7 +84,7 @@ export class DashboardComponent implements OnInit {
     return card.title === 'Operator';
   }
 
-  downloadImage(){
+  downloadImage() {
     html2canvas(this.screen.nativeElement).then(canvas => {
       this.canvas.nativeElement.src = canvas.toDataURL();
       this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
