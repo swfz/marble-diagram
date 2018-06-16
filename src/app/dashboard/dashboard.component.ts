@@ -30,9 +30,19 @@ export class DashboardComponent implements OnInit {
     ];
 
     this.operators = {
-      map: 'map(x => x * 2)',
-      filter: 'filter(x => x % 2 === 0)',
-      scan: 'scan((acc, x) => acc + x)'
+      bufferTime: 'bufferTime(100)',
+      concatMap: 'concatMap(i => 10*i-----10*i-----10*i--|)',
+      distinctUntilChanged: 'distinctUntilChanged((a, b) => a.name === b.name)',
+      filter: 'filter(x => x % 2 === 1)',
+      from: 'from([10,20,30])',
+      fromEvent: `fromEvent(element, 'click')`,
+      interval: 'interval(3000)',
+      map: 'map(x => x * 10)',
+      mergeMap: 'mergeMap(i => 10*i-----10*i-----10*i--|)',
+      scan: 'scan((acc, cur) => acc + cur, 0)',
+      skip: 'skip(3)',
+      skipWhile: 'skipWhile(x => x < 4)',
+      takeWhile: 'takeWhile(x => x == 5)',
     };
 
     this.marbles = [1,2,3,4,5,6,7,8];
