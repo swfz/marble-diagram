@@ -23,11 +23,15 @@
   </mat-menu>
 
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
-    <button mat-mini-fab color="accent">+</button>
+    <button mat-mini-fab color="primary">+</button>
   </button>
 
-  <button mat-icon-button (click)="downloadImage()">
-    DL
+  <button mat-raised-button
+          style="float: right;"
+          color="basic"
+          (click)="downloadImage()">
+    <mat-icon fontSet="fa" fontIcon="fa-download">
+    </mat-icon>
   </button>
 
   <div #screen class="screen">

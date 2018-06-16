@@ -18,7 +18,7 @@ import {
   MatGridListModule,
   MatCardModule,
   MatMenuModule,
-  MatInputModule, MatBadgeModule
+  MatInputModule, MatBadgeModule, MatIconRegistry
 } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OutsideClickDirective } from './directives/outside-click.directive';
@@ -49,7 +49,11 @@ import { OutsideClickDirective } from './directives/outside-click.directive';
     MatCardModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [MatIconRegistry],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(public matIconRegistry: MatIconRegistry){
+    matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+  }
+}
