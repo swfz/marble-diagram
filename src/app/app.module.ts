@@ -24,6 +24,9 @@ import {
 } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OutsideClickDirective } from './directives/outside-click.directive';
+import {Angulartics2Module} from 'angulartics2';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
+import {AppRoutingModule} from './app.routing.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { OutsideClickDirective } from './directives/outside-click.directive';
     OutsideClickDirective
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -49,7 +53,8 @@ import { OutsideClickDirective } from './directives/outside-click.directive';
     MatInputModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
   ],
   providers: [MatIconRegistry],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  constructor(ga: Angulartics2GoogleAnalytics) {}
 
   ngOnInit() {}
 }

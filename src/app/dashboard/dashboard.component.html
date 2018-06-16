@@ -12,13 +12,29 @@
 
   <mat-menu #operatorMenu="matMenu">
     <ng-container *ngFor="let operator of operatorKeys">
-      <button mat-menu-item (click)="addOperator(operator)">{{operator}}</button>
+      <button mat-menu-item
+              angulartics2On="click"
+              angularticsAction="addOperator"
+              angularticsCategory="Event"
+              [angularticsLabel]="operator"
+              [angularticsValue]="operator"
+              (click)="addOperator(operator)">
+        {{operator}}
+      </button>
     </ng-container>
   </mat-menu>
 
   <mat-menu #marbleMenu="matMenu">
     <ng-container *ngFor="let marble of marbles">
-      <button mat-menu-item (click)="addStream(marble)">{{marble}}</button>
+      <button mat-menu-item
+              angularticsCategory="Event"
+              angulartics2On="click"
+              angularticsAction="addStream"
+              [angularticsLabel]="marble"
+              [angularticsValue]="marble"
+              (click)="addStream(marble)">
+        {{marble}}
+      </button>
     </ng-container>
   </mat-menu>
 
@@ -29,6 +45,10 @@
   <button mat-raised-button
           style="float: right;"
           color="basic"
+          angularticsCategory="Event"
+          angulartics2On="click"
+          angularticsAction="downloadImage"
+          angularticsLabel="downloadImage"
           (click)="downloadImage()">
     <mat-icon fontSet="fa" fontIcon="fa-download">
     </mat-icon>
@@ -47,8 +67,25 @@
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu" xPosition="before">
-                <button *ngIf="isStream(card)" (click)="addMarble(i)" mat-menu-item>AddValue</button>
-                <button (click)="removeCard(i)" mat-menu-item>Remove</button>
+                <button *ngIf="isStream(card)"
+                        (click)="addMarble(i)"
+                        angularticsCategory="Event"
+                        angulartics2On="click"
+                        angularticsAction="addMarble"
+                        [angularticsLabel]="addMarble"
+                        [angularticsValue]="card.data"
+                        mat-menu-item>
+                  AddValue
+                </button>
+                <button (click)="removeCard(i)"
+                        angularticsCategory="Event"
+                        angulartics2On="click"
+                        angularticsAction="removeLine"
+                        [angularticsLabel]="card.title"
+                        [angularticsValue]="card.title"
+                        mat-menu-item>
+                  Remove
+                </button>
               </mat-menu>
             </mat-card-title>
           </mat-card-header>
