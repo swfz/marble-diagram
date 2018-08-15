@@ -27,6 +27,8 @@ import { OutsideClickDirective } from './directives/outside-click.directive';
 import {Angulartics2Module} from 'angulartics2';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 import {AppRoutingModule} from './app.routing.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import {AppRoutingModule} from './app.routing.module';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [MatIconRegistry],
   bootstrap: [AppComponent]
